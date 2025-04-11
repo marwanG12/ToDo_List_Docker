@@ -64,6 +64,11 @@ Structure du Projet
 ├── docker-compose.yml         # Configuration Docker Compose
 
 
+Lien vers les images Docker Hub (marwang12/frontend-tpgroupe & marwang12/backend-tpgroupe) : https://hub.docker.com/repositories/marwang12
+
+
+
+
 Quelle est la différence entre build: et image: dans Docker Compose ?
 
 La directive build: dans Docker Compose permet de construire l image Docker à partir d un Dockerfile situé dans le répertoire spécifié, tandis que image: spécifie directement une image Docker préexistante à utiliser sans avoir à la construire.
