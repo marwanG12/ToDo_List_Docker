@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+
+# Service backend
+  backend:
+    build:
+      context: ./backend
+    image: marwang12/backend-tpgroupe:v1.0
+    ports:
+      - "5000:5000"  
+    environment:
+      - DB_URI=${MONGO_URI}  # L'URI de MongoDB provenant du fichier .env
+      - PORT=${PORT}  # Port de l'application backend
+    networks:
+      - mynetwork
+   
+    restart: always
+    # volumes:
+    #   - ./backend/.env:/app/.env  # Monte le fichier .env du backend dans le container
+
+
+  # Service frontend
+  frontend:
+    build:
+      context: ./frontend           
+    image: marwang12/frontend-tpgroupe:v1.0
+    ports:
+      - "3000:3000"  # Le frontend sera accessible sur le port 3000
+    depends_on:
+      - backend
+    networks:
+      - mynetwork
+  
+  
+networks:
+  mynetwork:
+    driver: bridge
